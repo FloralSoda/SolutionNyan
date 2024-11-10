@@ -1,0 +1,444 @@
+@font-face {
+	font-family: 'Unica One';
+	src: url('assets/fonts/UnicaOne-Regular.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Magistral Extra';
+	src: url('assets/fonts/Magistral-ExtraBoldItalic.eot');
+	src: local('Magistral Extra Bold Italic'), local('Magistral-ExtraBoldItalic'),
+	url('assets/fonts/Magistral-ExtraBoldItalic.eot?#iefix') format('embedded-opentype'),
+	url('assets/fonts/Magistral-ExtraBoldItalic.woff2') format('woff2'),
+	url('assets/fonts/Magistral-ExtraBoldItalic.woff') format('woff'),
+	url('assets/fonts/Magistral-ExtraBoldItalic.ttf') format('truetype');
+	font-weight: 800;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'Magistral';
+	src: url('assets/fonts/Magistral-LightItalic.eot');
+	src: local('Magistral Light Italic'), local('Magistral-LightItalic'),
+	url('assets/fonts/Magistral-LightItalic.eot?#iefix') format('embedded-opentype'),
+	url('assets/fonts/Magistral-LightItalic.woff2') format('woff2'),
+	url('assets/fonts/Magistral-LightItalic.woff') format('woff'),
+	url('assets/fonts/Magistral-LightItalic.ttf') format('truetype');
+	font-weight: 300;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'Magistral Extra';
+	src: url('assets/fonts/Magistral-ExtraBold.eot');
+	src: local('Magistral Extra Bold'), local('Magistral-ExtraBold'),
+	url('assets/fonts/Magistral-ExtraBold.eot?#iefix') format('embedded-opentype'),
+	url('assets/fonts/Magistral-ExtraBold.woff2') format('woff2'),
+	url('assets/fonts/Magistral-ExtraBold.woff') format('woff'),
+	url('assets/fonts/Magistral-ExtraBold.ttf') format('truetype');
+	font-weight: 800;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Magistral';
+	src: url('assets/fonts/Magistral-Medium.eot');
+	src: local('Magistral Medium'), local('Magistral-Medium'),
+	url('assets/fonts/Magistral-Medium.eot?#iefix') format('embedded-opentype'),
+	url('assets/fonts/Magistral-Medium.woff2') format('woff2'),
+	url('assets/fonts/Magistral-Medium.woff') format('woff'),
+	url('assets/fonts/Magistral-Medium.ttf') format('truetype');
+	font-weight: 500;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Magistral Book';
+	src: url('assets/fonts/Magistral-BookItalic.eot');
+	src: local('Magistral Book Italic'), local('Magistral-BookItalic'),
+	url('assets/fonts/Magistral-BookItalic.eot?#iefix') format('embedded-opentype'),
+	url('assets/fonts/Magistral-BookItalic.woff2') format('woff2'),
+	url('assets/fonts/Magistral-BookItalic.woff') format('woff'),
+	url('assets/fonts/Magistral-BookItalic.ttf') format('truetype');
+	font-weight: normal;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'Magistral Book';
+	src: url('assets/fonts/Magistral-Book.eot');
+	src: local('Magistral Book'), local('Magistral-Book'),
+	url('assets/fonts/Magistral-Book.eot?#iefix') format('embedded-opentype'),
+	url('assets/fonts/Magistral-Book.woff2') format('woff2'),
+	url('assets/fonts/Magistral-Book.woff') format('woff'),
+	url('assets/fonts/Magistral-Book.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Magistral';
+	src: url('assets/fonts/Magistral-Bold.eot');
+	src: local('Magistral Bold'), local('Magistral-Bold'),
+	url('assets/fonts/Magistral-Bold.eot?#iefix') format('embedded-opentype'),
+	url('assets/fonts/Magistral-Bold.woff2') format('woff2'),
+	url('assets/fonts/Magistral-Bold.woff') format('woff'),
+	url('assets/fonts/Magistral-Bold.ttf') format('truetype');
+	font-weight: bold;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Magistral';
+	src: url('assets/fonts/Magistral-Light.eot');
+	src: local('Magistral Light'), local('Magistral-Light'),
+	url('assets/fonts/Magistral-Light.eot?#iefix') format('embedded-opentype'),
+	url('assets/fonts/Magistral-Light.woff2') format('woff2'),
+	url('assets/fonts/Magistral-Light.woff') format('woff'),
+	url('assets/fonts/Magistral-Light.ttf') format('truetype');
+	font-weight: 300;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Magistral';
+	src: url('assets/fonts/Magistral-MediumItalic.eot');
+	src: local('Magistral Medium Italic'), local('Magistral-MediumItalic'),
+	url('assets/fonts/Magistral-MediumItalic.eot?#iefix') format('embedded-opentype'),
+	url('assets/fonts/Magistral-MediumItalic.woff2') format('woff2'),
+	url('assets/fonts/Magistral-MediumItalic.woff') format('woff'),
+	url('assets/fonts/Magistral-MediumItalic.ttf') format('truetype');
+	font-weight: 500;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'Magistral';
+	src: url('assets/fonts/Magistral-BoldItalic.eot');
+	src: local('Magistral Bold Italic'), local('Magistral-BoldItalic'),
+	url('assets/fonts/Magistral-BoldItalic.eot?#iefix') format('embedded-opentype'),
+	url('assets/fonts/Magistral-BoldItalic.woff2') format('woff2'),
+	url('assets/fonts/Magistral-BoldItalic.woff') format('woff'),
+	url('assets/fonts/Magistral-BoldItalic.ttf') format('truetype');
+	font-weight: bold;
+	font-style: italic;
+}
+
+
+html {
+	font-family: "Kanit", monospace;
+	text-align: center;
+	text-wrap: pretty;
+}
+
+:root {
+	--chab-r: #ff00ff;
+	--chab-b: #00ffff;
+	--accent: #d267d2;
+	--dark-accent: #683168;
+	--trans-accent: #dd88dd80;
+	--trans-dark-accent: #68316880;
+}
+
+@media (prefers-color-scheme: light) {
+	:root {
+		--fg-base: #0f0f0f;
+		--bg-base: #fbf2fb80;
+		--transparent-bg-base: #fbf2fb40;
+		--transparent-fg-base: #0f0f0f40;
+	}
+	div.container {
+		backdrop-filter: brightness(2.77) blur(5px) saturate(0.5);
+	}
+	div.content {
+		background: var(--transparent-bg-base);
+	}
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--fg-base: #f0f0f0;
+		--bg-base: #0b020b80;
+		--transparent-bg-base: #0b020b40;
+		--transparent-fg-base: #f0f0f040;
+	}
+	div.container {
+		backdrop-filter: brightness(0.23) blur(5px) saturate(4.5);
+	}
+	div.content {
+		background: var(--transparent-fg-base);
+	}
+}
+
+body {
+	overflow: hidden;
+	margin: 0;
+	display: grid;
+	width: 100lvw;
+	height: calc(100svh - 40px);
+	background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+	url("./assets/img/bg.webp"), no-repeat, center, fixed;
+	background-size: max(100lvw, 100lvh) max(100lvh, 100lvw);
+	color: var(--fg-base);
+	backdrop-filter: blur(5px);
+	grid-template-columns: 2fr 6fr 2fr;
+	grid-template-rows: 100fr 1fr;
+	gap: 10px;
+	padding-block: 20px;
+}
+
+body > * {
+	grid-column: 2 / 2;
+	padding: 5px;
+}
+
+h1.title{
+	font-family: "Unica One", sans-serif;
+	text-shadow:
+			1px 1px var(--chab-r),
+			-1px -1px var(--chab-b);
+}
+
+h1, h2, legend {
+	font-family: "Magistral Extra", monospace;
+	font-weight: 800;
+	margin: 0;
+}
+
+legend {
+	backdrop-filter: blur(1px);
+	mask: linear-gradient(
+			to right,
+			rgba(0, 0, 0, 0) 0%,
+			rgba(0, 0, 0, 1) 2%,
+			rgba(0, 0, 0, 1) 98%,
+			rgba(0, 0, 0, 0) 100%
+	);
+	font-size: 1.5rem;
+}
+h1 {
+	font-size: 4rem;
+}
+
+h2 {
+	font-size: 3rem;
+	text-align: left;
+}
+
+span.header {
+	font-family: "Unica One", sans-serif;
+	text-shadow:
+			1px 1px var(--chab-r),
+			-1px -1px var(--chab-b);
+	font-size: 4rem;
+}
+
+div.container {
+	background: var(--transparent-bg-base);
+	box-shadow:
+			5px 5px 3px var(--chab-r),
+			-5px -5px 3px var(--chab-b);
+	border-radius: 10px;
+}
+
+div.content {
+	display: flex;
+	flex-direction: column;
+	align-content: center;
+	border-radius: 15px;
+	margin: 5px;
+	padding: 5px;
+}
+
+hr {
+	border: 0;
+	border-radius: 8px;
+	background: radial-gradient(var(--fg-base), transparent 70%);
+}
+
+p {
+	font-family: "Magistral", sans-serif;
+	font-weight: 500;
+	margin: 5px;
+	font-size: 1rem;
+}
+
+fieldset {
+	border: 3px inset var(--transparent-bg-base);
+	box-shadow:
+			1px 1px var(--chab-r),
+			-1px -1px var(--chab-b);
+	margin: 0 5px 5px;
+	border-radius: 8px;
+}
+
+.switch {
+	position: relative;
+	display: inline-block;
+	width: 36px;
+	height: 9px;
+	padding: 5px;
+}
+
+.switch input {
+	opacity: 0;
+	width: 0;
+	height: 0;
+}
+
+.slider {
+	position: absolute;
+	cursor: pointer;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: var(--dark-accent);
+	-webkit-transition: .1s;
+	transition: .1s;
+	transition-timing-function: ease-in, steps(1, jump-end);
+}
+
+.slider:before {
+	position: absolute;
+	content: "";
+	height: 10px;
+	width: 16px;
+	left: 3px;
+	top: 4px;
+	background-color: white;
+	-webkit-transition: .1s;
+	transition: .1s;
+	transition-timing-function: ease-in, steps(1, jump-end);
+}
+
+input:checked + .slider {
+	background-color: var(--accent);
+}
+
+input:focus + .slider {
+	box-shadow: 0 0 1px var(--accent);
+}
+
+input:checked + .slider:before {
+	transform: translateX(23px);
+}
+
+.slider.round {
+	border-radius: 34px;
+}
+
+.slider.round:before {
+	border-radius: 50%;
+}
+
+#navbar-area {
+	grid-column: 1 / -1;
+	height: 50px;
+	position: absolute;
+	top: 0;
+	background: transparent;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+}
+@keyframes navbar-flicker-open {
+	0%, 90% { border-image: linear-gradient(to bottom, var(--accent) 10%, var(--chab-r) 50%, var(--accent) 90%) 7; }
+	10%, 100% { border-image: linear-gradient(to bottom, var(--dark-accent) 10%, var(--dark-accent) 50%, var(--dark-accent) 90%) 7; }
+}
+@keyframes navbar-flicker-open-grad {
+	0% { border-image: linear-gradient(to bottom, var(--dark-accent) 10%, var(--dark-accent) 50%, var(--dark-accent) 90%) 7; }
+	100% { border-image: linear-gradient(to bottom, var(--accent) 10%, var(--chab-r) 50%, var(--accent) 90%) 7; }
+}
+@keyframes navbar-flicker {
+	0%, 19.9%, 22%, 62.9%, 64%, 64.9%, 70%, 100% {
+		border-image: linear-gradient(to bottom, var(--accent) 10%, var(--chab-r) 50%, var(--accent) 90%) 7;
+	}
+	20%, 21.9%, 63%, 63.9%, 65%, 69.9% {
+		border-image: linear-gradient(to bottom, var(--dark-accent) 10%, var(--dark-accent) 50%, var(--dark-accent) 90%) 7;
+	}
+}
+#navbar-area:hover > #navbar {
+	top: 0;
+	border-bottom-color: var(--accent);
+	animation-name: navbar-flicker-open, navbar-flicker-open-grad, navbar-flicker;
+	animation-duration: .5s, .5s, 3s;
+	animation-delay: 0s, .5s, 1s;
+	animation-iteration-count: 1, 1, infinite;
+	animation-timing-function: linear, ease-out, linear;
+}
+/*border-bottom: 1px solid var(--chab-r);*/
+#navbar {
+	height: 50px;
+	top: -50px;
+	width: 95%;
+	position: absolute;
+	overflow: hidden;
+	background: var(--bg-base);
+	backdrop-filter: blur(5px);
+	border-bottom: 5px solid;
+	border-image: linear-gradient(to bottom, var(--dark-accent) 10%, var(--accent) 50%, var(--dark-accent) 90%) 1;
+	border-bottom-left-radius: 3px;
+	border-bottom-right-radius: 3px;
+	z-index: 1;
+	transition: top .5s;
+	padding-block: 0;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+	display: flex;
+	border-bottom-style: outset;
+}
+#navbar a {
+	color: inherit;
+	cursor: pointer;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	text-decoration: none;
+	margin-inline: 2px;
+	width: 6rem;
+	height: 100%;
+	border-bottom-width: 5px;
+	border-bottom-style: inset;
+	border-bottom-color: transparent;
+}
+#navbar a > span {
+	display: inline-block;
+	vertical-align: middle;
+	line-height: normal;
+}
+#navbar a:hover {
+	background: #8888;
+}
+#navbar a.active {
+	border-bottom-color: var(--accent);
+}
+
+a.button {
+	color: inherit;
+	cursor: pointer;
+	background: var(--dark-accent);
+}
+a.button > span {
+	display: inline-block;
+	vertical-align: middle;
+	line-height: normal;
+}
+a.button:hover {
+	 background: var(--accent);
+}
+
+@media screen and (min-width: 320px) {
+	.auto-scale {
+		font-size: calc(16px + 6 * ((100vw - 320px) / 680));
+	}
+}
+@media screen and (min-width: 1000px) {
+	.auto-scale {
+		font-size: 22px;
+	}
+}
