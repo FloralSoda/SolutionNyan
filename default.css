@@ -148,9 +148,11 @@ html {
 		--transparent-bg-base: #fbf2fb40;
 		--transparent-fg-base: #0f0f0f40;
 	}
+
 	div.container {
 		backdrop-filter: brightness(2.77) blur(5px) saturate(0.5);
 	}
+
 	div.content {
 		background: var(--transparent-bg-base);
 	}
@@ -163,9 +165,11 @@ html {
 		--transparent-bg-base: #0b020b40;
 		--transparent-fg-base: #f0f0f040;
 	}
+
 	div.container {
 		backdrop-filter: brightness(0.23) blur(5px) saturate(4.5);
 	}
+
 	div.content {
 		background: var(--transparent-fg-base);
 	}
@@ -193,11 +197,10 @@ body > * {
 	padding: 5px;
 }
 
-h1.title{
+h1.title {
 	font-family: "Unica One", sans-serif;
-	text-shadow:
-			1px 1px var(--chab-r),
-			-1px -1px var(--chab-b);
+	text-shadow: 1px 1px var(--chab-r),
+	-1px -1px var(--chab-b);
 }
 
 h1, h2, legend {
@@ -217,6 +220,7 @@ legend {
 	);
 	font-size: 1.5rem;
 }
+
 h1 {
 	font-size: 4rem;
 }
@@ -228,21 +232,19 @@ h2 {
 
 span.header {
 	font-family: "Unica One", sans-serif;
-	text-shadow:
-			1px 1px var(--chab-r),
-			-1px -1px var(--chab-b);
+	text-shadow: 1px 1px var(--chab-r),
+	-1px -1px var(--chab-b);
 	font-size: 4rem;
 }
 
-div.container {
+.container {
 	background: var(--transparent-bg-base);
-	box-shadow:
-			5px 5px 3px var(--chab-r),
-			-5px -5px 3px var(--chab-b);
+	box-shadow: 5px 5px 3px var(--chab-r),
+	-5px -5px 3px var(--chab-b);
 	border-radius: 10px;
 }
 
-div.content {
+.content {
 	display: flex;
 	flex-direction: column;
 	align-content: center;
@@ -266,9 +268,8 @@ p {
 
 fieldset {
 	border: 3px inset var(--transparent-bg-base);
-	box-shadow:
-			1px 1px var(--chab-r),
-			-1px -1px var(--chab-b);
+	box-shadow: 1px 1px var(--chab-r),
+	-1px -1px var(--chab-b);
 	margin: 0 5px 5px;
 	border-radius: 8px;
 }
@@ -343,14 +344,25 @@ input:checked + .slider:before {
 	display: flex;
 	justify-content: center;
 }
+
 @keyframes navbar-flicker-open {
-	0%, 90% { border-image: linear-gradient(to bottom, var(--accent) 10%, var(--chab-r) 50%, var(--accent) 90%) 7; }
-	10%, 100% { border-image: linear-gradient(to bottom, var(--dark-accent) 10%, var(--dark-accent) 50%, var(--dark-accent) 90%) 7; }
+	0%, 90% {
+		border-image: linear-gradient(to bottom, var(--accent) 10%, var(--chab-r) 50%, var(--accent) 90%) 7;
+	}
+	10%, 100% {
+		border-image: linear-gradient(to bottom, var(--dark-accent) 10%, var(--dark-accent) 50%, var(--dark-accent) 90%) 7;
+	}
 }
+
 @keyframes navbar-flicker-open-grad {
-	0% { border-image: linear-gradient(to bottom, var(--dark-accent) 10%, var(--dark-accent) 50%, var(--dark-accent) 90%) 7; }
-	100% { border-image: linear-gradient(to bottom, var(--accent) 10%, var(--chab-r) 50%, var(--accent) 90%) 7; }
+	0% {
+		border-image: linear-gradient(to bottom, var(--dark-accent) 10%, var(--dark-accent) 50%, var(--dark-accent) 90%) 7;
+	}
+	100% {
+		border-image: linear-gradient(to bottom, var(--accent) 10%, var(--chab-r) 50%, var(--accent) 90%) 7;
+	}
 }
+
 @keyframes navbar-flicker {
 	0%, 19.9%, 22%, 62.9%, 64%, 64.9%, 70%, 100% {
 		border-image: linear-gradient(to bottom, var(--accent) 10%, var(--chab-r) 50%, var(--accent) 90%) 7;
@@ -359,6 +371,7 @@ input:checked + .slider:before {
 		border-image: linear-gradient(to bottom, var(--dark-accent) 10%, var(--dark-accent) 50%, var(--dark-accent) 90%) 7;
 	}
 }
+
 #navbar-area:hover > #navbar {
 	top: 0;
 	border-bottom-color: var(--accent);
@@ -368,6 +381,7 @@ input:checked + .slider:before {
 	animation-iteration-count: 1, 1, infinite;
 	animation-timing-function: linear, ease-out, linear;
 }
+
 /*border-bottom: 1px solid var(--chab-r);*/
 #navbar {
 	height: 50px;
@@ -390,6 +404,7 @@ input:checked + .slider:before {
 	display: flex;
 	border-bottom-style: outset;
 }
+
 #navbar a {
 	color: inherit;
 	cursor: pointer;
@@ -406,14 +421,17 @@ input:checked + .slider:before {
 	border-bottom-style: inset;
 	border-bottom-color: transparent;
 }
+
 #navbar a > span {
 	display: inline-block;
 	vertical-align: middle;
 	line-height: normal;
 }
+
 #navbar a:hover {
 	background: #8888;
 }
+
 #navbar a.active {
 	border-bottom-color: var(--accent);
 }
@@ -423,13 +441,15 @@ a.button {
 	cursor: pointer;
 	background: var(--dark-accent);
 }
+
 a.button > span {
 	display: inline-block;
 	vertical-align: middle;
 	line-height: normal;
 }
+
 a.button:hover {
-	 background: var(--accent);
+	background: var(--accent);
 }
 
 @media screen and (min-width: 320px) {
@@ -437,8 +457,15 @@ a.button:hover {
 		font-size: calc(16px + 6 * ((100vw - 320px) / 680));
 	}
 }
+
 @media screen and (min-width: 1000px) {
 	.auto-scale {
 		font-size: 22px;
 	}
+}
+
+div.cardlist {
+	overflow: auto;
+	white-space: nowrap;
+
 }
