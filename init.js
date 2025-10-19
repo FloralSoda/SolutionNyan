@@ -7,7 +7,7 @@ function intoWebstormLink(path) {
 	if (window.location.hostname === "localhost") {
 		return "/Solution Nyan 2/" + path;
 	} else {
-		return path;
+		return "/" + path;
 	}
 }
 
