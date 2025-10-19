@@ -1,9 +1,9 @@
-.stack {
+.glitch {
     display: grid;
     grid-template-columns: 1fr;
 }
 
-.stack span {
+.glitch span {
     font-weight: bold;
     grid-row-start: 1;
     grid-column-start: 1;
@@ -19,10 +19,10 @@
         glitch 2s ease infinite 2s alternate-reverse;
 }
 
-.stack span:nth-child(odd) {
+.glitch span:nth-child(odd) {
     --glitch-translate: 8px;
 }
-.stack span:nth-child(even) {
+.glitch span:nth-child(even) {
     --glitch-translate: -8px;
 }
 

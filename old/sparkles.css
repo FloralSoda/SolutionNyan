@@ -5,7 +5,6 @@
     top: 0;
     grid-column: 1/3;
     width: calc(100svw + 40px);
-    height: 100svh;
     overflow: hidden;
 }
 
