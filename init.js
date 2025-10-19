@@ -7,7 +7,7 @@ function intoWebstormLink(path) {
 	if (window.location.hostname === "localhost") {
 		return "/Solution Nyan 2/" + path;
 	} else {
-		return "/" + path;
+		return path;
 	}
 }
 
@@ -25,7 +25,7 @@ function setTheme() {
 	import(intoWebstormLink('modules/cookies.mjs')).then((cookies) => {
 		import(intoWebstormLink('modules/toolkit.mjs')).then((toolkit) => {
 			cookies.getTheme().then(theme => {
-				toolkit.addStyle("/themes/" + theme);
+				toolkit.addStyle("themes/" + theme);
 			});
 		});
 	});
@@ -35,7 +35,8 @@ function setTheme() {
 function loadComponents() {
 	import(intoWebstormLink('components/components.js')).then((components) => {
 	});
-	import(intoWebstormLink('modules/toolkit.mjs')).then((toolkit) => {
+	import(intoWebstormLink('Solution Nyan/modules/toolkit.mjs')).then((toolkit) => {
+		console.log("loading default");
 		toolkit.addStyle("pages/default");
 	});
 }
