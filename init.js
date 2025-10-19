@@ -35,7 +35,7 @@ function setTheme() {
 function loadComponents() {
 	import(intoWebstormLink('components/components.js')).then((components) => {
 	});
-	import(intoWebstormLink('Solution Nyan/modules/toolkit.mjs')).then((toolkit) => {
+	import(intoWebstormLink('modules/toolkit.mjs')).then((toolkit) => {
 		console.log("loading default");
 		toolkit.addStyle("pages/default");
 	});
