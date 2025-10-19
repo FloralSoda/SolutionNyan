@@ -61,7 +61,7 @@ class Card extends HTMLElement {
 		this.add_link();
 
 		import(intoWebstormLink('modules/toolkit.mjs')).then((toolkit) => {
-			toolkit.addStyle("/components/card/card");
+			toolkit.addStyle("components/card/card");
 		});
 	}
 

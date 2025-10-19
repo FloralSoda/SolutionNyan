@@ -24,7 +24,7 @@ class SparkleBox extends HTMLElement {
 
 	connectedCallback() {
 		import(intoWebstormLink('modules/toolkit.mjs')).then((toolkit) => {
-			toolkit.addStyle("/components/sparklebox/sparklebox");
+			toolkit.addStyle("components/sparklebox/sparklebox");
 		});
 
 		this.className = "sparkle-box";

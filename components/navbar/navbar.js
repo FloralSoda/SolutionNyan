@@ -11,10 +11,12 @@ const page_names = {
 class NavButton {
 	static id;
 	static children;
+
 	constructor(id, children) {
 		this.id = id;
 		this.children = children;
 	}
+
 	render(current) {
 		if (typeof this.children === "string") {
 			if (this.id === current) {
@@ -52,6 +54,7 @@ const pages = [
 //The navbar itself
 export class Navbar extends HTMLElement {
 	static observedAttributes = ["current"]
+
 	get currentPage() {
 		return this.getAttribute("current");
 	}
@@ -76,7 +79,7 @@ export class Navbar extends HTMLElement {
 		this.innerHTML = out.join("");
 
 		import(intoWebstormLink('modules/toolkit.mjs')).then((toolkit) => {
-			toolkit.addStyle("/components/navbar/navbar");
+			toolkit.addStyle("components/navbar/navbar");
 		});
 	}
 }

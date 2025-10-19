@@ -36,7 +36,7 @@ function loadComponents() {
 	import(intoWebstormLink('components/components.js')).then((components) => {
 	});
 	import(intoWebstormLink('modules/toolkit.mjs')).then((toolkit) => {
-		toolkit.addStyle("/pages/default");
+		toolkit.addStyle("pages/default");
 	});
 }
 
