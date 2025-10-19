@@ -1,0 +1,75 @@
+.navbar-link {
+	background-color: transparent;
+	padding: 16px;
+	border: none;
+
+	color: var(--secondary_color);
+	text-align: center;
+	text-justify: auto;
+	text-decoration: none;
+	border-block-end: 2px solid transparent;
+
+	&:hover {
+		background-color: var(--primary_hover);
+		transition: background-color 0.15s;
+	}
+}
+.active{
+	border-block-end: 2px solid var(--secondary_color);
+}
+div.navbar-dropdown {
+	position: relative;
+	display: inline-block;
+
+	&:hover div.navbar-content {
+		display: block;
+	}
+}
+div.navbar-content {
+	display: none;
+	position: absolute;
+	border: var(--primary_border);
+	background-color: var(--primary_color);
+
+	& > a {
+		display: flex;
+	}
+}
+#navbar-area {
+	position: absolute;
+	top: 0;
+	height: 50px;
+	width: 100%;
+
+	background: transparent;
+
+	display: flex;
+	justify-content: center;
+
+	&:hover > #navbar {
+		top: 10px;
+	}
+}
+#navbar {
+	position: fixed;
+	top: -50px;
+	width: 95%;
+	height: 50px;
+	z-index: 1;
+
+	border: 2px solid var(--primary_border);
+	border-radius: 16px;
+
+	background: var(--primary_color);
+	backdrop-filter: blur(2px);
+	-webkit-backdrop-filter: blur(2px);
+
+	transition: top .2s;
+	transition-timing-function: ease-in-out;
+
+	padding-inline: 20px;
+	padding-block: 2px;
+	display: inline-block;
+	align-items: center;
+	justify-content: center;
+}

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Solution Nyan - Apps</title>
+	<!-- This is here for Webstorm reasons until I can figure out how to make it serve resources properly
+									↓                                               -->
+	<link rel="stylesheet" type="text/css" href="/Solution Nyan 2/pages/fonts.css">
+	<script src="/Solution Nyan 2/init.js"></script>
+	<script src="/init.js"></script>
+</head>
+<body>
+<sn-sparklebox id="sparkles" count=100></sn-sparklebox>
+<sn-navbar current="apps"></sn-navbar>
+<div class="container">
+	<div style="margin: 1rem;">
+		<h1>Apps & Utilities</h1>
+		<p>
+			I've always enjoyed building utilities. My very first script was a.. not-so-secure password lock for a door
+			in a video game. The person I showed it to immediately broke it by opening up the script but that started my
+			career as a software dev! Since then, I've been honing my skills, building little tools for me and my friends,
+			little libraries and utilities to aid making these tools, and soon I shall be releasing full applications to
+			the public in the hopes that my code has improved enough for public use. I have already provided code for
+			industry, but my true goal is to become a public staple on devices everywhere.
+		</p>
+	</div>
+	<fieldset>
+		<div style="display: flex">
+			<sn-card title="LogViewer" preview="Live Logging companion for Rust" tags="rust;library;utility;" href="https://gitlab.com/FloralSoda/logviewer"></sn-card>
+			<sn-card title="EzRender" preview="Handles a lot of the boilerplate for WGPU in Rust" tags="rust;library;utility;gpu;graphics;" href="https://gitlab.com/FloralSoda/ezrender"></sn-card>
+		</div>
+	</fieldset>
+</div>
+</body>
+</html>

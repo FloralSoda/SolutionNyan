@@ -1,0 +1,66 @@
+.card-cardlist {
+  overflow: auto;
+  white-space: nowrap;
+}
+
+.card-cardlist > div {
+  display: inline-block;
+}
+
+.selectorcard {
+  max-width: 300px;
+  max-height: 300px;
+  min-width: 300px;
+  min-height: 300px;
+  width: 300px;
+  height: 300px;
+  display: inline-grid;
+  grid-template: "timeheader" 150px "   tags   " 50px "  preview " 100px;
+  background: var(--primary_hover);
+  border: 2px solid var(--primary_border);
+  border-radius: 16px;
+  aspect-ratio: 1/1;
+  justify-content: center;
+  align-content: start;
+  margin-inline: 5px;
+  padding: 5px;
+}
+
+.selectorcard time {
+  display: block;
+  box-sizing: border-box;
+  text-align: left;
+  margin-top: 0.5rem;
+  margin-inline: 1rem;
+}
+
+.selectorcard h3 {
+  font-size: 1.5rem;
+  text-align: left;
+  margin-top: 1rem;
+  margin-inline: 1rem;
+  overflow: auto;
+  scrollbar-width: none;
+}
+
+.tags {
+  max-width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  grid-area: tags;
+  z-index: 1;
+}
+
+.tags * {
+  margin-inline: 1rem;
+  margin-block: 2px;
+}
+
+.selectorcard p {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  grid-area: preview;
+  margin-top: 20px;
+}
+
+/*# sourceMappingURL=card.css.map */

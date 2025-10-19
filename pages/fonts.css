@@ -1,0 +1,24 @@
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("../assets/fonts/JetBrainsMono[wght].ttf");
+}
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("../assets/fonts/JetBrainsMono-Italic[wght].ttf");
+  font-style: italic;
+}
+@font-face {
+  font-family: "UnicaOne";
+  src: url("../assets/fonts/UnicaOne-Regular.ttf");
+}
+@font-face {
+  font-family: "Adwaita Mono";
+  src: url("../assets/fonts/AdwaitaMono-Regular.ttf");
+}
+@font-face {
+  font-family: "Adwaita Mono";
+  src: url("../assets/fonts/AdwaitaMono-Italic.ttf");
+  font-style: italic;
+}
+
+/*# sourceMappingURL=fonts.css.map */

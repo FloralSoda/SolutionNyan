@@ -1,0 +1,66 @@
+//@import url(./fonts.scss);
+
+body {
+	padding-top: 10px;
+	margin: 0;
+
+	background: black;
+
+	& * {
+		font-family: "JetBrains Mono", monospace;
+		font-size: 14px;
+		color: var(--secondary_color);
+	}
+}
+
+.container {
+	padding: 15px;
+	margin: 2rem auto;
+	width: min(80vw, 1000px);
+	overflow: clip;
+
+	background-color: var(--primary_color);
+	border-radius: 16px;
+	border: 2px solid var(--primary_border);
+}
+
+fieldset {
+	border: 2px inset var(--primary_border);
+	border-radius: 16px;
+	overflow: hidden;
+}
+legend {
+	font-weight: 800;
+	font-family: "Adwaita Mono", monospace;
+	font-size: 1.5rem;
+}
+.scroll_inhibitor {
+	width:100%;
+	padding-right:15px;
+	padding-left:15px;
+	margin-right:auto;
+	margin-left:auto
+}
+@media (min-width:576px) {
+	.scroll_inhibitor {
+		max-width:340px
+	}
+}
+@media (min-width:768px) {
+	.scroll_inhibitor {
+		max-width:555px
+	}
+}
+@media (min-width:992px) {
+	.scroll_inhibitor {
+		max-width:743px
+	}
+}
+@media (min-width:1200px) {
+	.scroll_inhibitor {
+		max-width:940px
+	}
+}
+h1 {
+	font-size: 2rem;
+}

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Solution Nyan - About</title>
+	<!-- This is here for Webstorm reasons until I can figure out how to make it serve resources properly
+									↓                                               -->
+	<link rel="stylesheet" type="text/css" href="/Solution Nyan 2/pages/fonts.css">
+	<script src="/Solution Nyan 2/init.js"></script>
+	<script src="/init.js"></script>
+</head>
+<body>
+	<sn-sparklebox id="sparkles" count=100></sn-sparklebox>
+	<sn-navbar current="about"></sn-navbar>
+	<div class="container">
+		<fieldset>
+			<legend>About this Website</legend>
+			<div style="margin-inline: 1rem;">
+				<p>
+					This website is partially a portfolio website, where someone can look through the stuff I've worked on
+					and see the skills I have. However, it's also for hosting tech I've made - Not just a portal to code
+					repositories, but access to JS/WASM tools I've written that might be useful.
+				</p>
+				<p>
+					In its current state, where everything is hosted on Github, this website just serves as a portal to the
+					different code repositories I own and as a static host to various articles I write about random things
+					that interest me.
+				</p>
+				<p>
+					In the future, I plan to host this website on my own server, whether through a VPS or my own hardware.
+					At such a time, this website will become the host for my code itself, likely based on <a href="https://forgejo.org/">Forgejo</a>,
+					to keep my code safe from being scraped without my consent. It would also have the benefit of effectively
+					limitless storage and free rein over the processing capabilities of my server.
+				</p>
+				<p>
+					This website is tested on Firefox. If you are using a browser that does not run on Gecko
+					(Floorp, Zen, etc.) and you come across any bugs, <a href="https://github.com/FloralSoda/SolutionNyan/issues">please let me know on GitHub</a>
+				</p>
+			</div>
+		</fieldset>
+		<fieldset>
+			<legend>About Me</legend>
+			<div style="display: flex; flex-direction: row;">
+				<div style="flex-direction: column; margin-left: 1rem;">
+					<div style="float: left; display: inline-flex; flex-direction: column; margin: 1rem; width: min(300px, 30vw)">
+						<img src="https://github.com/FloralSoda.png" alt="My profile picture" style="width:min(300px, 30vw);border-radius:16px">
+						<sub style="color: var(--subtitle); margin-left:min(50px, 10vw)">That's me up there :3 ↑</sub>
+					</div>
+					<!-- yes this is misaligned on purpose I don't like how it looks otherwise -->
+					<p style="margin-top: 2rem;">
+						I go by a lot of names. Lexi, Lily, Hydro, Jelly, FloralSoda, etc. All of them are me! I'm a UK-born girly
+						with a love for computers, games and maths!~ Naturally, I speak English, but I am also learning
+						Dansk and 日本語! Hej! こんにちわ!
+					</p>
+					<p>
+						I don't have university education, but I have equivalent experience in the software industry, on top of
+						years of hobby work that taught me most of what I know. I specialise in building tools and simulations,
+						but I've been formally trained in web tech. The use of the GPU is my current fixation, and I
+						hope that it becomes a powerful tool in my pocket for future projects as I develop my understanding
+						of WGSL and Vulkan.
+					</p>
+					<p>
+						In terms of software, I can write in most languages. Like any other programmer worth their salt,
+						I can pick up a language fairly competently in a few months, and I do enjoy this process! I love
+						finding languages that fit a niche, and then learning that language as and when I need that niche.
+						Typically, it's for performance reasons, as ease of writing is something I add into the language
+						myself if its features allow me to and its ease of use isn't already to my liking.
+					</p>
+					<p>
+						Due to picking up so many languages for fun, I have some opinions on the bigger languages:
+					</p>
+					<ul>
+						<li>JavaScript is flexible and great for prototyping, but it falls apart as you start building
+							larger projects with it due to it trying to be more than it is.</li>
+						<li>Conversely, Rust is perfect for large scale projects as its compiler enforces practices that
+							prevent a lot of common mistakes. The downside, to me, is the compilation time. Awful for
+							iterative development. I hear there's lots of work being done on that front though, so I look
+							forward to that!</li>
+						<li>C is perfect as a lightweight language that can be used for anything, though I don't like
+							how much weight there is on the developer getting everything perfect, both in its community
+							and in its feature set.</li>
+						<li>I haven't done loads of Python, but it's like JavaScript to me but with a harder to understand
+							syntax. The use of indentation instead of braces is too weird for me, and makes it somewhat vague
+							where the scopes end until you see the next line of code.</li>
+					</ul>
+				</div>
+			</div>
+		</fieldset>
+	</div>
+</body>
+</html>
