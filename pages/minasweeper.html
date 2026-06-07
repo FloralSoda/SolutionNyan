@@ -1,0 +1,589 @@
+HTML
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Thank you @galacticsavage on discord for making this!! -->
+<title>MINA.SWEEP — SCP-7934</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&display=swap');
+
+  :root {
+    --bg: #050810;
+    --panel: #0a0f1e;
+    --border: #1a2a4a;
+    --accent: #4a9eff;
+    --accent2: #8b5cf6;
+    --danger: #ff4a6e;
+    --cell-bg: #0d1425;
+    --cell-revealed: #060c18;
+    --cell-hover: #111e35;
+    --text: #c0d8ff;
+    --dim: #3a5580;
+    --glow: 0 0 12px rgba(74, 158, 255, 0.4);
+    --glow-danger: 0 0 12px rgba(255, 74, 110, 0.5);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Share Tech Mono', monospace;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-image:
+      radial-gradient(ellipse at 20% 20%, rgba(74,158,255,0.04) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 80%, rgba(139,92,246,0.04) 0%, transparent 60%);
+  }
+
+  header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .logo {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(1.4rem, 4vw, 2.2rem);
+    font-weight: 900;
+    letter-spacing: 0.15em;
+    color: var(--accent);
+    text-shadow: var(--glow);
+  }
+
+  .logo span { color: var(--accent2); }
+
+  .subtitle {
+    font-size: 0.7rem;
+    color: var(--dim);
+    letter-spacing: 0.25em;
+    margin-top: 4px;
+  }
+
+  .controls {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 18px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .diff-btn {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    color: var(--dim);
+    padding: 6px 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-transform: uppercase;
+  }
+
+  .diff-btn:hover, .diff-btn.active {
+    border-color: var(--accent);
+    color: var(--accent);
+    box-shadow: var(--glow);
+  }
+
+  .hud {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 16px;
+    align-items: center;
+  }
+
+  .hud-panel {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    padding: 8px 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 90px;
+  }
+
+  .hud-label {
+    font-size: 0.6rem;
+    color: var(--dim);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+
+  .hud-value {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--accent);
+  }
+
+  .hud-value.danger { color: var(--danger); }
+
+  .reset-btn {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+    background: transparent;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    padding: 10px 20px;
+    cursor: pointer;
+    letter-spacing: 0.1em;
+    transition: all 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .reset-btn:hover {
+    background: rgba(74,158,255,0.1);
+    box-shadow: var(--glow);
+  }
+
+  .board-wrap {
+    border: 1px solid var(--border);
+    background: var(--panel);
+    padding: 12px;
+    box-shadow:
+      0 0 40px rgba(74,158,255,0.05),
+      inset 0 0 20px rgba(0,0,0,0.5);
+    position: relative;
+  }
+
+  .board-wrap::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    opacity: 0.5;
+  }
+
+  #board {
+    display: grid;
+    gap: 2px;
+    user-select: none;
+  }
+
+  .cell {
+    width: 36px;
+    height: 36px;
+    background: var(--cell-bg);
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    transition: background 0.1s, transform 0.05s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cell:hover:not(.revealed):not(.exploded) {
+    background: var(--cell-hover);
+    border-color: var(--accent);
+  }
+
+  .cell.revealed {
+    background: var(--cell-revealed);
+    border-color: #080f1f;
+    cursor: default;
+  }
+
+  .cell.flagged {
+    background: rgba(139,92,246,0.12);
+    border-color: var(--accent2);
+  }
+
+  .cell.flagged::after {
+    content: '⚑';
+    color: var(--accent2);
+    font-size: 1rem;
+    filter: drop-shadow(0 0 4px var(--accent2));
+  }
+
+  .cell.mine-revealed {
+    background: rgba(255,74,110,0.08);
+    border-color: var(--danger);
+    animation: pulse-mine 1s ease-in-out infinite;
+  }
+
+  .cell.exploded {
+    background: rgba(255,74,110,0.25) !important;
+    border-color: var(--danger) !important;
+    box-shadow: var(--glow-danger);
+    animation: none !important;
+  }
+
+  @keyframes pulse-mine {
+    0%, 100% { background: rgba(255,74,110,0.08); }
+    50% { background: rgba(255,74,110,0.15); }
+  }
+
+  .cell .mina-img {
+    width: 28px;
+    height: 28px;
+    object-fit: cover;
+    border-radius: 50%;
+    filter: drop-shadow(0 0 3px rgba(255,74,110,0.7));
+    animation: mina-glow 2s ease-in-out infinite;
+  }
+
+  @keyframes mina-glow {
+    0%, 100% { filter: drop-shadow(0 0 3px rgba(255,74,110,0.7)); }
+    50% { filter: drop-shadow(0 0 8px rgba(139,92,246,0.9)); }
+  }
+
+  .cell.exploded .mina-img {
+    animation: explode-spin 0.3s ease-out forwards;
+  }
+
+  @keyframes explode-spin {
+    0% { transform: scale(1) rotate(0deg); }
+    50% { transform: scale(1.5) rotate(180deg); }
+    100% { transform: scale(1) rotate(360deg); }
+  }
+
+  .n1 { color: #4a9eff; }
+  .n2 { color: #50fa7b; }
+  .n3 { color: #ff6b6b; }
+  .n4 { color: #bd93f9; }
+  .n5 { color: #ff9800; }
+  .n6 { color: #8be9fd; }
+  .n7 { color: #ff79c6; }
+  .n8 { color: #f8f8f2; }
+
+  .overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(5,8,16,0.85);
+    z-index: 100;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    backdrop-filter: blur(4px);
+  }
+
+  .overlay.show { display: flex; }
+
+  .overlay-box {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    padding: 40px 60px;
+    text-align: center;
+    box-shadow: 0 0 60px rgba(74,158,255,0.1);
+    animation: reveal 0.4s ease;
+  }
+
+  @keyframes reveal {
+    from { opacity: 0; transform: scale(0.9) translateY(-10px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+  }
+
+  .overlay-box.win .overlay-title { color: var(--accent); text-shadow: var(--glow); }
+  .overlay-box.lose .overlay-title { color: var(--danger); text-shadow: var(--glow-danger); }
+
+  .overlay-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2rem;
+    font-weight: 900;
+    letter-spacing: 0.1em;
+    margin-bottom: 10px;
+  }
+
+  .overlay-sub {
+    color: var(--dim);
+    font-size: 0.8rem;
+    letter-spacing: 0.15em;
+    margin-bottom: 25px;
+  }
+
+  .overlay-btn {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.9rem;
+    background: transparent;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    padding: 12px 30px;
+    cursor: pointer;
+    letter-spacing: 0.1em;
+    transition: all 0.2s;
+  }
+
+  .overlay-btn:hover { background: rgba(74,158,255,0.1); box-shadow: var(--glow); }
+
+  .scanline {
+    position: fixed;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg, transparent, transparent 2px,
+      rgba(0,0,0,0.03) 2px, rgba(0,0,0,0.03) 4px
+    );
+    pointer-events: none;
+    z-index: 200;
+  }
+
+  footer {
+    margin-top: 16px;
+    color: var(--dim);
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    opacity: 0.5;
+  }
+</style>
+</head>
+<body>
+<div class="scanline"></div>
+
+<header>
+  <div class="logo">MINA<span>.</span>SWEEP</div>
+  <div class="subtitle">SCP-7934 · INSTANCE DETECTION PROTOCOL</div>
+</header>
+
+<div class="controls">
+  <button class="diff-btn active" onclick="setDifficulty(9,9,10,this)">EASY</button>
+  <button class="diff-btn" onclick="setDifficulty(16,16,40,this)">MEDIUM</button>
+  <button class="diff-btn" onclick="setDifficulty(16,30,99,this)">HARD</button>
+</div>
+
+<div class="hud">
+  <div class="hud-panel">
+    <div class="hud-label">INSTANCES</div>
+    <div class="hud-value danger" id="mine-count">10</div>
+  </div>
+  <button class="reset-btn" onclick="init()">[ REINIT ]</button>
+  <div class="hud-panel">
+    <div class="hud-label">ELAPSED</div>
+    <div class="hud-value" id="timer">000</div>
+  </div>
+</div>
+
+<div class="board-wrap">
+  <div id="board"></div>
+</div>
+
+<footer>RIGHT CLICK / LONG PRESS TO FLAG · LEFT CLICK TO REVEAL</footer>
+
+<div class="overlay" id="overlay">
+  <div class="overlay-box" id="overlay-box">
+    <div class="overlay-title" id="overlay-title"></div>
+    <div class="overlay-sub" id="overlay-sub"></div>
+    <button class="overlay-btn" onclick="init(); document.getElementById('overlay').classList.remove('show')">[ REINITIALIZE ]</button>
+  </div>
+</div>
+
+<script>
+const MINA_B64 = "data:image/png;base64,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";
+
+let rows = 9, cols = 9, totalMines = 10;
+let board = [], revealed = [], flagged = [], gameOver = false, firstClick = true;
+let timerInterval = null, seconds = 0;
+
+function setDifficulty(r, c, m, btn) {
+  document.querySelectorAll('.diff-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  rows = r; cols = c; totalMines = m;
+  init();
+}
+
+function init() {
+  clearInterval(timerInterval);
+  seconds = 0;
+  document.getElementById('timer').textContent = '000';
+  document.getElementById('mine-count').textContent = totalMines;
+  gameOver = false;
+  firstClick = true;
+
+  board = Array.from({length: rows}, () => Array(cols).fill(0));
+  revealed = Array.from({length: rows}, () => Array(cols).fill(false));
+  flagged = Array.from({length: rows}, () => Array(cols).fill(false));
+
+  renderBoard();
+}
+
+function placeMines(safeR, safeC) {
+  let placed = 0;
+  while (placed < totalMines) {
+    const r = Math.floor(Math.random() * rows);
+    const c = Math.floor(Math.random() * cols);
+    if (board[r][c] === -1) continue;
+    if (Math.abs(r - safeR) <= 1 && Math.abs(c - safeC) <= 1) continue;
+    board[r][c] = -1;
+    placed++;
+  }
+  for (let r = 0; r < rows; r++) {
+    for (let c = 0; c < cols; c++) {
+      if (board[r][c] === -1) continue;
+      let count = 0;
+      for (let dr = -1; dr <= 1; dr++)
+        for (let dc = -1; dc <= 1; dc++) {
+          const nr = r + dr, nc = c + dc;
+          if (nr >= 0 && nr < rows && nc >= 0 && nc < cols && board[nr][nc] === -1) count++;
+        }
+      board[r][c] = count;
+    }
+  }
+}
+
+function renderBoard() {
+  const el = document.getElementById('board');
+  el.style.gridTemplateColumns = `repeat(${cols}, 36px)`;
+  el.innerHTML = '';
+  for (let r = 0; r < rows; r++) {
+    for (let c = 0; c < cols; c++) {
+      const cell = document.createElement('div');
+      cell.className = 'cell';
+      cell.dataset.r = r;
+      cell.dataset.c = c;
+      cell.addEventListener('click', onLeftClick);
+      cell.addEventListener('contextmenu', onRightClick);
+
+      // Long press for mobile
+      let pressTimer;
+      cell.addEventListener('touchstart', e => {
+        pressTimer = setTimeout(() => { e.preventDefault(); onRightClick({currentTarget: cell, preventDefault: ()=>{}}); }, 500);
+      }, {passive: false});
+      cell.addEventListener('touchend', () => clearTimeout(pressTimer));
+      cell.addEventListener('touchmove', () => clearTimeout(pressTimer));
+
+      el.appendChild(cell);
+    }
+  }
+}
+
+function getCell(r, c) {
+  return document.querySelector(`.cell[data-r="${r}"][data-c="${c}"]`);
+}
+
+function onLeftClick(e) {
+  if (gameOver) return;
+  const r = +e.currentTarget.dataset.r;
+  const c = +e.currentTarget.dataset.c;
+  if (flagged[r][c] || revealed[r][c]) return;
+
+  if (firstClick) {
+    firstClick = false;
+    placeMines(r, c);
+    startTimer();
+  }
+
+  if (board[r][c] === -1) {
+    revealMine(r, c, true);
+    return;
+  }
+
+  flood(r, c);
+  updateDisplay();
+  checkWin();
+}
+
+function onRightClick(e) {
+  e.preventDefault();
+  if (gameOver) return;
+  const r = +e.currentTarget.dataset.r;
+  const c = +e.currentTarget.dataset.c;
+  if (revealed[r][c]) return;
+
+  flagged[r][c] = !flagged[r][c];
+  const cell = getCell(r, c);
+  cell.className = 'cell' + (flagged[r][c] ? ' flagged' : '');
+
+  const flagCount = flagged.flat().filter(Boolean).length;
+  document.getElementById('mine-count').textContent = totalMines - flagCount;
+}
+
+function flood(r, c) {
+  if (r < 0 || r >= rows || c < 0 || c >= cols) return;
+  if (revealed[r][c] || flagged[r][c]) return;
+  revealed[r][c] = true;
+  if (board[r][c] === 0) {
+    for (let dr = -1; dr <= 1; dr++)
+      for (let dc = -1; dc <= 1; dc++)
+        if (dr !== 0 || dc !== 0) flood(r + dr, c + dc);
+  }
+}
+
+function updateDisplay() {
+  for (let r = 0; r < rows; r++) {
+    for (let c = 0; c < cols; c++) {
+      if (revealed[r][c]) {
+        const cell = getCell(r, c);
+        cell.className = 'cell revealed';
+        const v = board[r][c];
+        if (v > 0) {
+          cell.textContent = v;
+          cell.classList.add('n' + v);
+        }
+      }
+    }
+  }
+}
+
+function revealMine(clickR, clickC, exploded) {
+  gameOver = true;
+  clearInterval(timerInterval);
+  for (let r = 0; r < rows; r++) {
+    for (let c = 0; c < cols; c++) {
+      if (board[r][c] === -1) {
+        const cell = getCell(r, c);
+        const img = document.createElement('img');
+        img.src = MINA_B64;
+        img.className = 'mina-img';
+        if (r === clickR && c === clickC) {
+          cell.className = 'cell exploded';
+          setTimeout(() => { cell.innerHTML = ''; cell.appendChild(img); }, 0);
+        } else {
+          cell.className = 'cell mine-revealed';
+          cell.innerHTML = '';
+          cell.appendChild(img);
+        }
+      }
+    }
+  }
+  setTimeout(() => showOverlay(false), 800);
+}
+
+function checkWin() {
+  let unrevealedSafe = 0;
+  for (let r = 0; r < rows; r++)
+    for (let c = 0; c < cols; c++)
+      if (!revealed[r][c] && board[r][c] !== -1) unrevealedSafe++;
+  if (unrevealedSafe === 0) {
+    gameOver = true;
+    clearInterval(timerInterval);
+    setTimeout(() => showOverlay(true), 300);
+  }
+}
+
+function startTimer() {
+  timerInterval = setInterval(() => {
+    seconds++;
+    document.getElementById('timer').textContent = String(seconds).padStart(3, '0');
+  }, 1000);
+}
+
+function showOverlay(win) {
+  const box = document.getElementById('overlay-box');
+  box.className = 'overlay-box ' + (win ? 'win' : 'lose');
+  document.getElementById('overlay-title').textContent = win ? 'CONTAINED' : 'PROPAGATED';
+  document.getElementById('overlay-sub').textContent = win
+    ? `SCP-7934 instances neutralized in ${seconds}s`
+    : 'SCP-7934 has breached containment';
+  document.getElementById('overlay').classList.add('show');
+}
+
+init();
+</script>
+</body>
+</html>
+
